@@ -5,12 +5,22 @@ public class YearlyReportManager {
     ArrayList<YearlyReportRows> expenses;
     ArrayList<YearlyReportRows> profits;
 
-    public void printProfitPerMonth() {
+    public void printYearlyReportsInfo() {
+        System.out.println("\nИНФОРМАЦИЯ ЗА 2021 ГОД");
+
+        int monthlyProfit;
+        double avgExpense = 0;
+        double avgProfit = 0;
         for (int i = 0; i < 3; i++) {
-            int monthlyProfit = profits.get(i).amount - expenses.get(i).amount;
-//            int avgExpense = expenses.get(i)
+            monthlyProfit = profits.get(i).amount - expenses.get(i).amount;
+            avgExpense += expenses.get(i).amount;
+            avgProfit += profits.get(i).amount;
             System.out.println("Прибыль за " + monthlyReportsManager.getMonthName(i) + " - " + monthlyProfit);
         }
+        avgExpense = avgExpense / 3;
+        avgProfit = avgProfit / 3;
+        System.out.println("Средний расход за все месяцы в году - " + String.format("%.2f", avgExpense));
+        System.out.println("Средний доход за все месяцы в году - " + String.format("%.2f", avgProfit));
     }
 
     public void parsedYearlyReportFromFile() {

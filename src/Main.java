@@ -5,6 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         MonthlyReportsManager monthlyReportsManager = new MonthlyReportsManager();
         YearlyReportManager yearlyReportManager = new YearlyReportManager();
+        ReconciliationReports reconciliation = new ReconciliationReports();
 
         while (true) {
             printMenu();
@@ -14,8 +15,7 @@ public class Main {
             } else if (command == 2) {
                 yearlyReportManager.parsedYearlyReportFromFile();
             } else if (command == 3) {
-                // Сверить отчёты
-                System.out.println("\nЗдесь будет команда " + command);
+                reconciliation.checkReports();
             } else if (command == 4) {
                 try {
                     monthlyReportsManager.printMonthlyReportsInfo();
@@ -23,8 +23,11 @@ public class Main {
                     System.out.println("\nПожалуйста, сначала считайте все месячные отчеты.");
                 }
             } else if (command == 5) {
-                // Вывести информацию о годовом отчёте
-                yearlyReportManager.printProfitPerMonth();
+                try {
+                    yearlyReportManager.printYearlyReportsInfo();
+                } catch (Exception e) {
+                    System.out.println("\nПожалуйста, сначала считайте все месячные отчеты.");
+                }
             } else if (command == 0) {
                 System.out.println("\nПрограмма завершена. До встречи!");
                 break;

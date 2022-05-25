@@ -48,7 +48,15 @@ hs_err_pid*
 
 # IntelliJ
 /out/
+.idea
+*.iml
+gen
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
+### macOS template
+# General
+.DS_Store
+.AppleDouble
+.LSOverride

@@ -12,8 +12,10 @@ public class Main {
             int command = scanner.nextInt();
             if (command == 1) {
                 monthlyReportsManager.parsedMonthlyReportFromFile();
+                System.out.println("\nМесячные отчеты считаны!");
             } else if (command == 2) {
                 yearlyReportManager.parsedYearlyReportFromFile();
+                System.out.println("\nГодовой отчет считан!");
             } else if (command == 3) {
                 reconciliation.checkReports();
             } else if (command == 4) {

@@ -7,8 +7,8 @@ public class ReconciliationReports {
         yearlyReportManager.parsedYearlyReportFromFile();
         int countError = 0;
         for (int i = 1; i <= 3 ; i++) {
-            int expenseInYearlyReport = yearlyReportManager.expenses.get(i - 1).amount;
-            int profitInYearlyReport = yearlyReportManager.profits.get(i - 1).amount;
+            int expenseInYearlyReport = yearlyReportManager.yearlyReportExpenses.get(i).amount;
+            int profitInYearlyReport = yearlyReportManager.yearlyReportProfits.get(i).amount;
             if ((getMonthSumExpenses(i) != expenseInYearlyReport) || (getMonthSumProfits(i) != profitInYearlyReport)) {
                 System.out.println("\nНайдено несоответствие в месяце" + i + "е!");
                 countError++;

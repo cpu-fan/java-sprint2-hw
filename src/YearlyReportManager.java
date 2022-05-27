@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class YearlyReportManager {
-    ArrayList<YearlyReportRow> expenses;
-    ArrayList<YearlyReportRow> profits;
+    HashMap<Integer, YearlyReportRow> yearlyReportExpenses;
+    HashMap<Integer, YearlyReportRow> yearlyReportProfits;
 
     public void printYearlyReportsInfo() {
         System.out.println("\nИНФОРМАЦИЯ ЗА 2021 ГОД");
@@ -10,11 +11,11 @@ public class YearlyReportManager {
         int monthlyProfit;
         double avgExpense = 0;
         double avgProfit = 0;
-        for (int i = 0; i < 3; i++) {
-            monthlyProfit = profits.get(i).amount - expenses.get(i).amount;
-            avgExpense += expenses.get(i).amount;
-            avgProfit += profits.get(i).amount;
-            System.out.println("Прибыль за месяц " + (i + 1) + " - " + monthlyProfit);
+        for (int i = 1; i <= 3; i++) {
+            monthlyProfit = yearlyReportProfits.get(i).amount - yearlyReportExpenses.get(i).amount;
+            avgExpense += yearlyReportExpenses.get(i).amount;
+            avgProfit += yearlyReportProfits.get(i).amount;
+            System.out.println("Прибыль за месяц " + i + " - " + monthlyProfit);
         }
         avgExpense = avgExpense / 3;
         avgProfit = avgProfit / 3;
@@ -24,8 +25,8 @@ public class YearlyReportManager {
 
     public void parsedYearlyReportFromFile() {
         FileReader reader = new FileReader();
-        expenses = new ArrayList<>();
-        profits = new ArrayList<>();
+        yearlyReportExpenses = new HashMap<>();
+        yearlyReportProfits = new HashMap<>();
 
         for (int i = 1; i <= 1; i++) {
             YearlyReportRow oneParsedRow;
@@ -38,10 +39,10 @@ public class YearlyReportManager {
                 boolean isExpense = Boolean.parseBoolean(parts[2]);
                 if (isExpense) {
                     oneParsedRow = new YearlyReportRow(month, amount, true);
-                    expenses.add(oneParsedRow);
+                    yearlyReportExpenses.put(month, oneParsedRow);
                 } else {
                     oneParsedRow = new YearlyReportRow(month, amount, false);
-                    profits.add(oneParsedRow);
+                    yearlyReportProfits.put(month, oneParsedRow);
                 }
             }
         }

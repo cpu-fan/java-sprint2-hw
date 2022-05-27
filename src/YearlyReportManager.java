@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class YearlyReportManager {
-    HashMap<Integer, YearlyReportRow> yearlyReportExpenses;
-    HashMap<Integer, YearlyReportRow> yearlyReportProfits;
+    HashMap<Integer, YearlyReportRow> yearlyReportExpenses = new HashMap<>();
+    HashMap<Integer, YearlyReportRow> yearlyReportProfits = new HashMap<>();
 
     public void printYearlyReportsInfo() {
         System.out.println("\nИНФОРМАЦИЯ ЗА 2021 ГОД");

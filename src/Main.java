@@ -17,18 +17,22 @@ public class Main {
                 yearlyReportManager.parsedYearlyReportFromFile();
                 System.out.println("\nГодовой отчет считан!");
             } else if (command == 3) {
-                reconciliation.checkReports();
+                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
+                    reconciliation.checkReports();
+                } else {
+                    System.out.println("\nПожалуйста, сначала считайте все месячные и годовой отчеты.");
+                }
             } else if (command == 4) {
-                try {
+                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
                     monthlyReportsManager.printMonthlyReportsInfo();
-                } catch (Exception e) {
-                    System.out.println("\nПожалуйста, сначала считайте все месячные отчеты.");
+                } else {
+                    System.out.println("\nПожалуйста, сначала считайте все месячные и годовой отчеты.");
                 }
             } else if (command == 5) {
-                try {
+                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
                     yearlyReportManager.printYearlyReportsInfo();
-                } catch (Exception e) {
-                    System.out.println("\nПожалуйста, сначала считайте все месячные отчеты.");
+                } else {
+                    System.out.println("\nПожалуйста, сначала считайте все месячные и годовой отчеты.");
                 }
             } else if (command == 0) {
                 System.out.println("\nПрограмма завершена. До встречи!");

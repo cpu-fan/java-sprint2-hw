@@ -1,10 +1,12 @@
 public class ReconciliationReports {
-    MonthlyReportsManager monthlyReportsManager = new MonthlyReportsManager();
-    YearlyReportManager yearlyReportManager = new YearlyReportManager();
+    MonthlyReportsManager monthlyReportsManager;
+    YearlyReportManager yearlyReportManager;
 
     public void checkReports() {
-        monthlyReportsManager.parsedMonthlyReportFromFile();
-        yearlyReportManager.parsedYearlyReportFromFile();
+//        monthlyReportsManager.parsedMonthlyReportFromFile();
+//        yearlyReportManager.parsedYearlyReportFromFile();
+        monthlyReportsManager = new MonthlyReportsManager();
+        yearlyReportManager = new YearlyReportManager();
         int countError = 0;
         for (int i = 1; i <= 3 ; i++) {
             int expenseInYearlyReport = yearlyReportManager.yearlyReportExpenses.get(i).amount;

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MonthlyReportsManager {
-    ArrayList<MonthlyReportRow> listMonthlyReportRows;
-    HashMap<Integer, ArrayList<MonthlyReportRow>> monthlyReports;
+    ArrayList<MonthlyReportRow> listMonthlyReportRows = new ArrayList<>();
+    HashMap<Integer, ArrayList<MonthlyReportRow>> monthlyReports = new HashMap<>();
 
     public void printMonthlyReportsInfo() {
         for (int i = 1; i <= 3; i++) {

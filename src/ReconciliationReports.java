@@ -2,6 +2,8 @@ public class ReconciliationReports {
     MonthlyReportsManager monthlyReportsManager;
     YearlyReportManager yearlyReportManager;
 
+    // --- Николай, если ты это читаешь, то значит я не смог тебя найти в слаке)) ---
+
     public void checkReports() {
 //        monthlyReportsManager.parsedMonthlyReportFromFile();
 //        yearlyReportManager.parsedYearlyReportFromFile();

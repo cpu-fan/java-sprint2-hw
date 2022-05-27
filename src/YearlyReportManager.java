@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class YearlyReportManager {
-    MonthlyReportsManager monthlyReportsManager = new MonthlyReportsManager();
-    ArrayList<YearlyReportRows> expenses;
-    ArrayList<YearlyReportRows> profits;
+    ArrayList<YearlyReportRow> expenses;
+    ArrayList<YearlyReportRow> profits;
 
     public void printYearlyReportsInfo() {
         System.out.println("\nИНФОРМАЦИЯ ЗА 2021 ГОД");
@@ -15,7 +14,7 @@ public class YearlyReportManager {
             monthlyProfit = profits.get(i).amount - expenses.get(i).amount;
             avgExpense += expenses.get(i).amount;
             avgProfit += profits.get(i).amount;
-            System.out.println("Прибыль за " + monthlyReportsManager.getMonthName(i) + " - " + monthlyProfit);
+            System.out.println("Прибыль за месяц " + (i + 1) + " - " + monthlyProfit);
         }
         avgExpense = avgExpense / 3;
         avgProfit = avgProfit / 3;
@@ -29,7 +28,7 @@ public class YearlyReportManager {
         profits = new ArrayList<>();
 
         for (int i = 1; i <= 1; i++) {
-            YearlyReportRows oneParsedRow;
+            YearlyReportRow oneParsedRow;
             String[] rawRow = reader.readFile("resources/y.202" + i + ".csv").split(System.lineSeparator());
 
             for (int j = 1; j < rawRow.length; j++) {
@@ -38,10 +37,10 @@ public class YearlyReportManager {
                 int amount = Integer.parseInt(parts[1]);
                 boolean isExpense = Boolean.parseBoolean(parts[2]);
                 if (isExpense) {
-                    oneParsedRow = new YearlyReportRows(month, amount, true);
+                    oneParsedRow = new YearlyReportRow(month, amount, true);
                     expenses.add(oneParsedRow);
                 } else {
-                    oneParsedRow = new YearlyReportRows(month, amount, false);
+                    oneParsedRow = new YearlyReportRow(month, amount, false);
                     profits.add(oneParsedRow);
                 }
             }

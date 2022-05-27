@@ -9,9 +9,8 @@ public class ReconciliationReports {
         for (int i = 1; i <= 3 ; i++) {
             int expenseInYearlyReport = yearlyReportManager.expenses.get(i - 1).amount;
             int profitInYearlyReport = yearlyReportManager.profits.get(i - 1).amount;
-            String month = monthlyReportsManager.getMonthName(i - 1);
             if ((getMonthSumExpenses(i) != expenseInYearlyReport) || (getMonthSumProfits(i) != profitInYearlyReport)) {
-                System.out.println("\nНайдено несоответствие в " + month + "е!");
+                System.out.println("\nНайдено несоответствие в месяце" + i + "е!");
                 countError++;
             }
         }
@@ -22,7 +21,7 @@ public class ReconciliationReports {
 
     public int getMonthSumExpenses(int monthNumber) {
         int sumExpenses = 0;
-        for (MonthlyReportRows values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
+        for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
             if (values.isExpense) {
                 sumExpenses += (values.sumOfOne * values.quantity);
             }
@@ -32,7 +31,7 @@ public class ReconciliationReports {
 
     public int getMonthSumProfits(int monthNumber) {
         int sumProfits = 0;
-        for (MonthlyReportRows values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
+        for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
             if (!values.isExpense) {
                 sumProfits += (values.sumOfOne * values.quantity);
             }

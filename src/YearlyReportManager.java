@@ -24,8 +24,6 @@ public class YearlyReportManager {
 
     public void parsedYearlyReportFromFile() {
         FileReader reader = new FileReader();
-        yearlyReportExpenses = new HashMap<>();
-        yearlyReportProfits = new HashMap<>();
 
         for (int i = 1; i <= 1; i++) {
             YearlyReportRow oneParsedRow;

@@ -1,19 +1,11 @@
 public class ReconciliationReports {
-    MonthlyReportsManager monthlyReportsManager;
-    YearlyReportManager yearlyReportManager;
 
-    // --- Николай, если ты это читаешь, то значит я не смог тебя найти в слаке)) ---
-
-    public void checkReports() {
-//        monthlyReportsManager.parsedMonthlyReportFromFile();
-//        yearlyReportManager.parsedYearlyReportFromFile();
-        monthlyReportsManager = new MonthlyReportsManager();
-        yearlyReportManager = new YearlyReportManager();
+    public void checkReports(MonthlyReportsManager monthlyReportsManager, YearlyReportManager yearlyReportManager) {
         int countError = 0;
         for (int i = 1; i <= 3 ; i++) {
             int expenseInYearlyReport = yearlyReportManager.yearlyReportExpenses.get(i).amount;
             int profitInYearlyReport = yearlyReportManager.yearlyReportProfits.get(i).amount;
-            if ((getMonthSumExpenses(i) != expenseInYearlyReport) || (getMonthSumProfits(i) != profitInYearlyReport)) {
+            if ((getMonthSumExpenses(i, monthlyReportsManager) != expenseInYearlyReport) || (getMonthSumProfits(i, monthlyReportsManager) != profitInYearlyReport)) {
                 System.out.println("\nНайдено несоответствие в месяце" + i + "е!");
                 countError++;
             }
@@ -23,7 +15,7 @@ public class ReconciliationReports {
         }
     }
 
-    public int getMonthSumExpenses(int monthNumber) {
+    public int getMonthSumExpenses(int monthNumber, MonthlyReportsManager monthlyReportsManager) {
         int sumExpenses = 0;
         for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
             if (values.isExpense) {
@@ -33,7 +25,7 @@ public class ReconciliationReports {
         return sumExpenses;
     }
 
-    public int getMonthSumProfits(int monthNumber) {
+    public int getMonthSumProfits(int monthNumber, MonthlyReportsManager monthlyReportsManager) {
         int sumProfits = 0;
         for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
             if (!values.isExpense) {

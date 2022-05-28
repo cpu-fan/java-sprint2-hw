@@ -6,7 +6,7 @@ public class ReconciliationReports {
             int expenseInYearlyReport = yearlyReportManager.yearlyReportExpenses.get(i).amount;
             int profitInYearlyReport = yearlyReportManager.yearlyReportProfits.get(i).amount;
             if ((getMonthSumExpenses(i, monthlyReportsManager) != expenseInYearlyReport) || (getMonthSumProfits(i, monthlyReportsManager) != profitInYearlyReport)) {
-                System.out.println("\nНайдено несоответствие в месяце" + i + "е!");
+                System.out.println("\nНайдено несоответствие в месяце" + i);
                 countError++;
             }
         }

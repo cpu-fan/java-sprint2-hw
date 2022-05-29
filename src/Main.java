@@ -17,19 +17,19 @@ public class Main {
                 yearlyReportManager.parsedYearlyReportFromFile();
                 System.out.println("\nГодовой отчет считан!");
             } else if (command == 3) {
-                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
+                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0) {
                     reconciliation.checkReports(monthlyReportsManager, yearlyReportManager);
                 } else {
                     System.out.println("\nПожалуйста, сначала считайте все месячные и годовой отчеты.");
                 }
             } else if (command == 4) {
-                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
+                if (monthlyReportsManager.monthlyReports.size() != 0) {
                     monthlyReportsManager.printMonthlyReportsInfo();
                 } else {
                     System.out.println("\nПожалуйста, сначала считайте все месячные отчеты.");
                 }
             } else if (command == 5) {
-                if (monthlyReportsManager.monthlyReports.size() != 0 && yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0 ) {
+                if (yearlyReportManager.yearlyReportProfits.size() != 0 && yearlyReportManager.yearlyReportExpenses.size() != 0) {
                     yearlyReportManager.printYearlyReportsInfo();
                 } else {
                     System.out.println("\nПожалуйста, сначала считайте годовой отчет.");

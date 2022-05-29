@@ -52,4 +52,24 @@ public class MonthlyReportsManager {
             monthlyReports.put(i, listMonthlyReportRows);
         }
     }
+    
+    public int getMonthSumExpenses(int monthNumber, MonthlyReportsManager monthlyReportsManager) {
+        int sumExpenses = 0;
+        for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
+            if (values.isExpense) {
+                sumExpenses += (values.sumOfOne * values.quantity);
+            }
+        }
+        return sumExpenses;
+    }
+
+    public int getMonthSumProfits(int monthNumber, MonthlyReportsManager monthlyReportsManager) {
+        int sumProfits = 0;
+        for (MonthlyReportRow values : monthlyReportsManager.monthlyReports.get(monthNumber)) {
+            if (!values.isExpense) {
+                sumProfits += (values.sumOfOne * values.quantity);
+            }
+        }
+        return sumProfits;
+    }
 }
